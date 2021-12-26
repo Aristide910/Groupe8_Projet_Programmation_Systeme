@@ -1,7 +1,6 @@
-# Groupe8_Projet_Programmation_Systeme
-Ucac-Icam Projet Programmation Systeme
+# Ucac-Icam Projet Programmation Systeme
 
-Un logiciel de jeu vidéo pour un restaurant gastronomique construit à l'aide de .NET Core et C#. 
+Un logiciel de jeu vidéo pour un restaurant gastronomique construit à l'aide du C#. 
 
 **Observation** : Ce logiciel est en cours de développement.
 
@@ -18,7 +17,8 @@ Ce projet est basé sur Windows Forms, pour accéder à l'outil de conception vo
 Vous trouverez ci-dessous des détails techniques sur l'interface, l'architecture, la base de données et d'autres décisions prises au cours du développement du projet.
 
 ## Modèle d'architecture
-MVC (Modèle - Vue - Contrôleur)
+**MVC (Modèle - Vue - Contrôleur)**
+
 Ce projet est écrit en utilisant le modèle MVC pour la séparation des préoccupations en raison de la capacité de couplage lâche, les couches logicielles comme le modèle sont indépendantes de l'interface utilisateur (vues) accédant aux données pour la présentation par la classe des contrôleurs, cette approche permet une meilleure maintenabilité et cohérence pour le développement à long terme.
 
 ## Vue d'ensemble du schéma UML
