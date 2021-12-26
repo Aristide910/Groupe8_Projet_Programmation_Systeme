@@ -26,9 +26,24 @@ Pour visualiser l'ensemble du diagramme de cas d'utilisation nous vous invitons 
 
 **Vous pouvez également voir d'autres diagrammes utilisés pour la conception de ce système orienté objet :**
 
-* Diagramme de classes - Un diagramme de structure statique qui décrit la structure du système en montrant les classes du système, leurs attributs, leurs opérations et les relations entre les objets.
-* Diagrammes de séquence - Un diagramme de séquence montre, sous forme de lignes verticales parallèles (lignes de vie), différents processus ou objets qui vivent simultanément, et, sous forme de flèches horizontales, les messages échangés entre eux, dans l'ordre où ils se produisent.
-* Diagrammes d'activité - Représentation graphique d'un flux de travail composé d'activités et d'actions par étapes, avec prise en charge du choix, de l'itération et de la concurrence.
+Diagramme de classes - Un diagramme de structure statique qui décrit la structure du système en montrant les classes du système, leurs attributs, leurs opérations et les relations entre les objets.
+
+Diagrammes de séquence - Un diagramme de séquence montre, sous forme de lignes verticales parallèles (lignes de vie), différents processus ou objets qui vivent simultanément, et, sous forme de flèches horizontales, les messages échangés entre eux, dans l'ordre où ils se produisent.
+
+Diagrammes d'activité - Représentation graphique d'un flux de travail composé d'activités et d'actions par étapes, avec prise en charge du choix, de l'itération et de la concurrence.
+
+# Conçu avec
+**Front-end :**
+
+Windows Forms Core - Cadre d'interface utilisateur permettant de créer des applications client riches pour Windows.
+
+**Back-end :**
+
+.NET Core avec C# - Cadre Microsoft open source et multiplateforme.
+
+**Base de données :**
+
+Microsoft SQL Server - Solution complète de Microsoft pour les bases de données relationnelles.
 
 # Contributeurs
 - Koloko Aristide
