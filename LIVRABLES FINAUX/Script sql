@@ -1,1 +1,166 @@
 
+/*------------------------------------------------------------
+*        Script SQLSERVER 
+------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------
+-- Table: Recettes
+------------------------------------------------------------*/
+CREATE TABLE Recettes(
+	ID_Recette          INT IDENTITY (1,1) NOT NULL ,
+	Nom_Recette         VARCHAR (50) NOT NULL ,
+	TypePlat            VARCHAR (50) NOT NULL ,
+	Temps_cuisson       INT  NOT NULL ,
+	Temps_preparation   INT  NOT NULL ,
+	Temps_repos         INT  NOT NULL ,
+	Prix_Recette        INT  NOT NULL  ,
+	CONSTRAINT Recettes_PK PRIMARY KEY (ID_Recette)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Stock Ingr�dients
+------------------------------------------------------------*/
+CREATE TABLE Stock_Ingredients(
+	ID_Stock         INT IDENTITY (1,1) NOT NULL ,
+	Zone_de_stock    VARCHAR (50) NOT NULL ,
+	Jour_de_stock    DATETIME NOT NULL ,
+	Duree_de_stock   INT  NOT NULL  ,
+	CONSTRAINT Stock_Ingredients_PK PRIMARY KEY (ID_Stock)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Ingr�dients
+------------------------------------------------------------*/
+CREATE TABLE Ingredients(
+	ID_Ingredient                 INT IDENTITY (1,1) NOT NULL ,
+	Nom_Ingr                      VARCHAR (50) NOT NULL ,
+	Quantite                      INT  NOT NULL ,
+	ID_Stock                      INT  NOT NULL ,
+	ID_Stock__Stock_Ingredients   INT  NOT NULL  ,
+	CONSTRAINT Ingredients_PK PRIMARY KEY (ID_Ingredient)
+
+	,CONSTRAINT Ingredients_Stock_Ingredients_FK FOREIGN KEY (ID_Stock__Stock_Ingredients) REFERENCES Stock_Ingredients(ID_Stock)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Materiel Cuisine
+------------------------------------------------------------*/
+CREATE TABLE Materiel_Cuisine(
+	ID_Outil         INT IDENTITY (1,1) NOT NULL ,
+	Nom_Outil        VARCHAR (50) NOT NULL ,
+	Nombre_Outil     INT  NOT NULL ,
+	Tmp_Moy_lavage   INT  NOT NULL ,
+	ID_Recette       INT    ,
+	CONSTRAINT Materiel_Cuisine_PK PRIMARY KEY (ID_Outil)
+
+	,CONSTRAINT Materiel_Cuisine_Recettes_FK FOREIGN KEY (ID_Recette) REFERENCES Recettes(ID_Recette)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Carr�
+------------------------------------------------------------*/
+CREATE TABLE Carre(
+	ID_Carre       INT IDENTITY (1,1) NOT NULL ,
+	Nombre_Table   INT  NOT NULL  ,
+	CONSTRAINT Carre_PK PRIMARY KEY (ID_Carre)
+);
+
+
+/*------------------------------------------------------------
+-- Table: TABLES
+------------------------------------------------------------*/
+CREATE TABLE TABLES(
+	ID_Table         INT IDENTITY (1,1) NOT NULL ,
+	ID_Carre         INT  NOT NULL ,
+	Type_Table       VARCHAR (50) NOT NULL ,
+	Nombre_Table     INT  NOT NULL ,
+	ID_Carre_Carre   INT  NOT NULL  ,
+	CONSTRAINT TABLES_PK PRIMARY KEY (ID_Table)
+
+	,CONSTRAINT TABLES_Carre_FK FOREIGN KEY (ID_Carre_Carre) REFERENCES Carre(ID_Carre)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Clients
+------------------------------------------------------------*/
+CREATE TABLE Clients(
+	ID_Client           INT IDENTITY (1,1) NOT NULL ,
+	ID_Commande         INT  NOT NULL ,
+	Reservation         bit  NOT NULL ,
+	Heure_Assignation   DATETIME  NOT NULL ,
+	Heure_Depart        DATETIME  NOT NULL ,
+	ID_Table            INT  NOT NULL ,
+	ID_Table_TABLES     INT  NOT NULL  ,
+	CONSTRAINT Clients_PK PRIMARY KEY (ID_Client)
+
+	,CONSTRAINT Clients_TABLES_FK FOREIGN KEY (ID_Table_TABLES) REFERENCES TABLES(ID_Table)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Commandes
+------------------------------------------------------------*/
+CREATE TABLE Commandes(
+	ID_Commande           INT IDENTITY (1,1) NOT NULL ,
+	ID_Recette            INT  NOT NULL ,
+	Nom_Boisson           VARCHAR (50) NOT NULL ,
+	Nom_Recette           VARCHAR (50) NOT NULL ,
+	ID_Client             INT  NOT NULL ,
+	ID_Recette_Recettes   INT  NOT NULL  ,
+	CONSTRAINT Commandes_PK PRIMARY KEY (ID_Commande)
+
+	,CONSTRAINT Commandes_Clients_FK FOREIGN KEY (ID_Client) REFERENCES Clients(ID_Client)
+	,CONSTRAINT Commandes_Recettes0_FK FOREIGN KEY (ID_Recette_Recettes) REFERENCES Recettes(ID_Recette)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Boissons
+------------------------------------------------------------*/
+CREATE TABLE Boissons(
+	ID_BOISSON       INT IDENTITY (1,1) NOT NULL ,
+	Nombre_Boisson   INT  NOT NULL ,
+	Nom_Boisson      VARCHAR (50) NOT NULL ,
+	Prix_Boisson     INT  NOT NULL ,
+	ID_Commande      INT    ,
+	CONSTRAINT Boissons_PK PRIMARY KEY (ID_BOISSON)
+
+	,CONSTRAINT Boissons_Commandes_FK FOREIGN KEY (ID_Commande) REFERENCES Commandes(ID_Commande)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Couverts
+------------------------------------------------------------*/
+CREATE TABLE Couverts(
+	ID_Couvert        INT IDENTITY (1,1) NOT NULL ,
+	Nom_Couvert       VARCHAR (50) NOT NULL ,
+	Nombre_Couverts   INT  NOT NULL ,
+	Tmp_Moy_Lavage    INT  NOT NULL ,
+	ID_Table          INT  NOT NULL  ,
+	CONSTRAINT Couverts_PK PRIMARY KEY (ID_Couvert)
+
+	,CONSTRAINT Couverts_TABLES_FK FOREIGN KEY (ID_Table) REFERENCES TABLES(ID_Table)
+);
+
+
+/*------------------------------------------------------------
+-- Table: Comprendre
+------------------------------------------------------------*/
+CREATE TABLE Comprendre(
+	ID_Ingredient   INT  NOT NULL ,
+	ID_Recette      INT  NOT NULL  ,
+	CONSTRAINT Comprendre_PK PRIMARY KEY (ID_Ingredient,ID_Recette)
+
+	,CONSTRAINT Comprendre_Ingredients_FK FOREIGN KEY (ID_Ingredient) REFERENCES Ingredients(ID_Ingredient)
+	,CONSTRAINT Comprendre_Recettes0_FK FOREIGN KEY (ID_Recette) REFERENCES Recettes(ID_Recette)
+);
+
+
+
