@@ -1,0 +1,4 @@
+F:\LIVRABLES-FINAUX\Geppetto\obj\Debug\net6.0\Geppetto.csproj.AssemblyReference.cache
+F:\LIVRABLES-FINAUX\Geppetto\obj\Debug\net6.0\Geppetto.Properties.Resources.resources
+F:\LIVRABLES-FINAUX\Geppetto\obj\Debug\net6.0\Project.Form1.resources
+F:\LIVRABLES-FINAUX\Geppetto\obj\Debug\net6.0\Geppetto.csproj.GenerateResource.cache
