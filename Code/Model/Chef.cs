@@ -14,8 +14,8 @@ namespace Project
         private StorageArea storageArea;
         private Cook cook;
 
-        public int posX { get; set; }
-        public int posY { get; set; }
+        public int  posX { get; set; }
+        public int  posY { get; set; }
 
         public Chef()
 
