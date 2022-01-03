@@ -21,7 +21,7 @@ namespace Project
         public KitchenChef(int posX, int posY)
         
         {
-            commands = new List<Order>();
+             commands = new List<Order>();
             this.posX = posX;
             this.posY = posY;
         }
