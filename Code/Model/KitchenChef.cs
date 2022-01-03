@@ -22,8 +22,8 @@ namespace Project
         
         {
              commands = new List<Order>();
-            this.posX = posX;
-            this.posY = posY;
+             this.posX = posX;
+             this.posY = posY;
         }
     }
 }
